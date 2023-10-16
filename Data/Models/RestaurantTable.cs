@@ -9,9 +9,4 @@
         public List<Extra> Extras { get; set; }
     }
 
-
-
-
-
-
 }
