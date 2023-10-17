@@ -6,8 +6,14 @@ namespace DineWise.Data.dbContext
 {
 	public class DineWiseDbContext : DbContext
 	{
+        public DineWiseDbContext(DbContextOptions<DineWiseDbContext> options):base(options)
+        {
+                
+        }
+
+
         //Data Models
-		public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<RestaurantTable> RestaurantTables { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
@@ -37,7 +43,7 @@ namespace DineWise.Data.dbContext
                 .Property(s => s.Id)
                 .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Restaurant>()
+           /* modelBuilder.Entity<Restaurant>()
                 .HasMany(r => r.Schedules)
                 .WithOne(s => s.Restaurant)
                 .HasForeignKey(s => s.RestaurantId);
@@ -54,9 +60,13 @@ namespace DineWise.Data.dbContext
                     j => j.HasOne(rrt => rrt.Reservation).WithMany(r => r.RestaurantTables),
                     //ReservationRestaurantTable record belongs to one Reservation + Reservation might have many associated ReservationRestaurantTable records
                     j => j.HasOne(rrt => rrt.RestaurantTable).WithMany());
+           */
                     //ReservationRestaurantTable record belongs to one RestaurantTable + RestaurantTable has many associated ReservationRestaurantTable records
         }
+        //ily nour<3
 
 
     }
 }
+
+

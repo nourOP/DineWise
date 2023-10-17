@@ -4,9 +4,10 @@
     "\\Controllers",
     "\\Data",
     "\\Data\\dbContext",
+    "\\Data\\DTO",
     "\\Data\\Models",
     "\\Properties"
   ],
-  "SelectedNode": "\\Data\\Models",
+  "SelectedNode": "\\Data\\Models\\Schedule.cs",
   "PreviewInSolutionExplorer": false
 }
