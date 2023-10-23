@@ -63,7 +63,7 @@ namespace DineWise.Data.dbContext
                 .Property(s => s.Id)
                 .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<OverwrittenSchedule>()
+            modelBuilder.Entity<OverwriteSchedule>()
                .Property(s => s.Id)
                .ValueGeneratedOnAdd();
 
@@ -71,10 +71,20 @@ namespace DineWise.Data.dbContext
                .Property(s => s.Id)
                .ValueGeneratedOnAdd();
 
+            modelBuilder.Entity<Join_ReservationRestaurantTable>()
+               .Property(s => s.Id)
+               .ValueGeneratedOnAdd();
 
+            modelBuilder.Entity<Join_RestaurantTableFeature>()
+               .Property(s => s.Id)
+               .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Join_UserRole>()
+               .Property(s => s.Id)
+               .ValueGeneratedOnAdd();
 
             //no key for audit records
-            modelBuilder.Entity<AuditRecords>().HasNoKey();
+            //modelBuilder.Entity<AuditRecords>().HasNoKey();
 
         }
 

@@ -2,6 +2,7 @@
 {
     public class Join_ReservationRestaurantTable
     {
+        public int Id { get; set; }
         public Guid ReservationId { get; set; }
         public int RestaurantTableId { get; set; }
         public Reservation Reservation { get; set; }

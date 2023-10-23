@@ -1,7 +1,6 @@
 ﻿namespace DineWise.Data.Models
 {
-    
-    public class Schedule
+    public class OverwriteSchedule
     {
         public int Id { get; set; }
 
@@ -10,5 +9,8 @@
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
         public Restaurant Restaurant { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
     }
 }

@@ -8,7 +8,7 @@
         public string Phone { get; set; }
         public string? Description { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
-        public ICollection<OverwrittenSchedule> OverwrittenSchedules { get; set; }
+        public ICollection<OverwriteSchedule>? OverwrittenSchedules { get; set; }
         public ICollection<RestaurantTable> RestaurantTables { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
