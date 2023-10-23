@@ -71,6 +71,11 @@ namespace DineWise.Data.dbContext
                .Property(s => s.Id)
                .ValueGeneratedOnAdd();
 
+
+
+            //no key for audit records
+            modelBuilder.Entity<AuditRecords>().HasNoKey();
+
         }
 
 
