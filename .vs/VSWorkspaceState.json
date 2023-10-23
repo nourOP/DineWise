@@ -6,8 +6,11 @@
     "\\Data\\dbContext",
     "\\Data\\DTO",
     "\\Data\\Models",
-    "\\Properties"
+    "\\Properties",
+    "\\Repositories",
+    "\\Repositories\\Interfaces",
+    "\\Repositories\\Validators"
   ],
-  "SelectedNode": "\\Data\\Models\\Schedule.cs",
+  "SelectedNode": "\\Repositories\\Interfaces",
   "PreviewInSolutionExplorer": false
 }

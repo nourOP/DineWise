@@ -8,7 +8,10 @@
         public string Phone { get; set; }
         public string? Description { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
+        public ICollection<OverwrittenSchedule> OverwrittenSchedules { get; set; }
         public ICollection<RestaurantTable> RestaurantTables { get; set; }
+        public AuditRecords auditRecords { get; set; }
+
     }
 
 }

@@ -1,10 +1,10 @@
 ﻿namespace DineWise.Data.Models
 {
-    public class ReservationRestaurantTable
+    public class Join_RestaurantTableFeature
     {
-        public Guid ReservationId { get; set; }
         public int RestaurantTableId { get; set; }
-        public Reservation Reservation { get; set; }
+        public int FeatureId { get; set; }
         public RestaurantTable RestaurantTable { get; set; }
+        public Feature Feature { get; set; }
     }
 }

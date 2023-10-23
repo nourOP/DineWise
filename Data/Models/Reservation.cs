@@ -9,6 +9,8 @@
         public string? Notes { get; set; }
         public User User { get; set; }
         public Restaurant Restaurant { get; set; }
-        public ICollection<ReservationRestaurantTable> ReservationRestaurantTables { get; set; }
+        public ICollection<Join_ReservationRestaurantTable> ReservationRestaurantTables { get; set; }
+        public AuditRecords auditRecords { get; set; }
+
     }
 }
