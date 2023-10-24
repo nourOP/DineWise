@@ -15,21 +15,13 @@ namespace DineWise.Data.dbContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            //many-to-many user + roles
-            modelBuilder.Entity<Join_UserRole>()
-                .HasOne(x => x.Role)
-                .WithMany(y => y.UserRoles)
-                .HasForeignKey(x => x.RoleId);
-            modelBuilder.Entity<Join_UserRole>()
-                .HasOne(x => x.User)
-                .WithMany(y=>y.UserRoles)
-                .HasForeignKey(x => x.UserId);
-
             //many to many table + reservation
             modelBuilder.Entity<Join_ReservationRestaurantTable>()
                 .HasOne(r => r.Reservation)
                 .WithMany(rrt => rrt.ReservationRestaurantTables)
-                .HasForeignKey(r => r.ReservationId);
+                .HasForeignKey(r => r.ReservationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Join_ReservationRestaurantTable>()
                .HasOne(rt => rt.RestaurantTable)
                .WithMany(rrt => rrt.ReservationRestaurantTables)
@@ -39,11 +31,15 @@ namespace DineWise.Data.dbContext
             modelBuilder.Entity<Join_RestaurantTableFeature>()
                .HasOne(x => x.Feature)
                .WithMany(y => y.RestaurantTableFeatures)
-               .HasForeignKey(x => x.FeatureId);
+               .HasForeignKey(x => x.FeatureId)
+               .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Join_RestaurantTableFeature>()
                 .HasOne(x => x.RestaurantTable)
                 .WithMany(y => y.RestaurantTableFeatures)
-                .HasForeignKey(x => x.RestaurantTableId);
+                .HasForeignKey(x => x.RestaurantTableId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
 
             //automatic ID Generation
@@ -79,9 +75,6 @@ namespace DineWise.Data.dbContext
                .Property(s => s.Id)
                .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Join_UserRole>()
-               .Property(s => s.Id)
-               .ValueGeneratedOnAdd();
 
             //no key for audit records
             //modelBuilder.Entity<AuditRecords>().HasNoKey();
@@ -99,8 +92,7 @@ namespace DineWise.Data.dbContext
         public DbSet<Feature> Features { get; set; }
         public DbSet<Join_RestaurantTableFeature> RestaurantTableFeatures { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<Join_UserRole> UserRoles { get; set; }
+        
 
 
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)

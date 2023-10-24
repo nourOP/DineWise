@@ -1,8 +1,10 @@
 global using DineWise.Repositories;
+using DineWise.Data.Models;
 using DineWise.Data.dbContext;
 using DineWise.Repositories.Interfaces;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -37,8 +39,22 @@ builder.Services.AddSwaggerGen(options=>
         {securityScheme, new string[] {} }
     });
 });
+
+
+
+//add connection strings
 builder.Services.AddDbContext <DineWiseDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DineWiseDbConnectionString")));
+builder.Services.AddDbContext<AuthDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DineWiseAuthDbConnectionString")));
+
+//add identity user+roles
+builder.Services.AddIdentity<User, IdentityRole>(options=>
+{
+    options.User.RequireUniqueEmail = true;
+}).AddEntityFrameworkStores<AuthDbContext>();
+
+
 builder.Services.AddScoped<IUserRepository,UserRepository>();
 builder.Services.AddScoped<ITokenHandler, DineWise.Repositories.TokenHandler>();
 

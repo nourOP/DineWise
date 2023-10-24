@@ -23,7 +23,7 @@ namespace DineWise.Repositories
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.GivenName, user.FirstName));
             claims.Add(new Claim(ClaimTypes.Surname, user.LastName));
-            claims.Add(new Claim(ClaimTypes.Email, user.EmailAddress));
+            //claims.Add(new Claim(ClaimTypes.Email, user.EmailAddress));
 
             //loop into user roles
             /*foreach (var role in user.Roles)

@@ -1,16 +1,12 @@
-﻿namespace DineWise.Data.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace DineWise.Data.Models
 {
-    public class User
+    public class User :IdentityUser
     {
-        public Guid Id { get; set; }
-        public string Username { get; set; } 
-        public string Password { get; set; }
-        public string EmailAddress { get; set; }
+       
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Phone { get; set; }
-        public List<Join_UserRole> UserRoles { get; set; }
-        public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
         public Guid LastUpdateBy { get; set; }
         public DateTime LastUpdateAt { get; set; } = DateTime.Now;

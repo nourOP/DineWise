@@ -39,7 +39,7 @@ namespace DineWise.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Features");
+                    b.ToTable("Features", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Join_ReservationRestaurantTable", b =>
@@ -62,7 +62,7 @@ namespace DineWise.Migrations
 
                     b.HasIndex("RestaurantTableId");
 
-                    b.ToTable("ReservationRestaurantTables");
+                    b.ToTable("ReservationRestaurantTables", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Join_RestaurantTableFeature", b =>
@@ -85,7 +85,7 @@ namespace DineWise.Migrations
 
                     b.HasIndex("RestaurantTableId");
 
-                    b.ToTable("RestaurantTableFeatures");
+                    b.ToTable("RestaurantTableFeatures", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Join_UserRole", b =>
@@ -108,7 +108,7 @@ namespace DineWise.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.OverwriteSchedule", b =>
@@ -141,7 +141,7 @@ namespace DineWise.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("OverwriteSchedule");
+                    b.ToTable("OverwriteSchedule", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Reservation", b =>
@@ -195,7 +195,7 @@ namespace DineWise.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Restaurant", b =>
@@ -244,7 +244,7 @@ namespace DineWise.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restaurants");
+                    b.ToTable("Restaurants", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.RestaurantTable", b =>
@@ -289,7 +289,7 @@ namespace DineWise.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("RestaurantTables");
+                    b.ToTable("RestaurantTables", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Role", b =>
@@ -306,7 +306,7 @@ namespace DineWise.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Schedule", b =>
@@ -333,7 +333,7 @@ namespace DineWise.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("Schedules");
+                    b.ToTable("Schedules", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.User", b =>
@@ -375,9 +375,13 @@ namespace DineWise.Migrations
                     b.Property<Guid>("LastUpdateBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Password")
+                    b.Property<byte[]>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -389,7 +393,7 @@ namespace DineWise.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("DineWise.Data.Models.Join_ReservationRestaurantTable", b =>
